@@ -39,6 +39,7 @@ The `ratings` table has the following columns:
 The following API endpoints are available in this application:
 
 - GET /api/v1/longest-duration-movies
+
 Returns the top 10 movies with the longest runtime in JSON format. The response includes the following details:
 
 ```yaml
@@ -64,6 +65,7 @@ Returns the top 10 movies with the longest runtime in JSON format. The response 
 }
 ```
 - POST /api/v1/new-movie
+
 Adds a new movie to the database. The request body should be in JSON format with the following details:
 
 tconst
@@ -75,6 +77,7 @@ genres
 On successful save, the endpoint returns a success message.
 
 - GET /api/v1/top-rated-movies
+
 Returns the movies with an averageRating > 6.0, in sorted order by averageRating in JSON format. The response includes the following details:
 
 ```yaml
@@ -99,6 +102,7 @@ Returns the movies with an averageRating > 6.0, in sorted order by averageRating
 ```
 
 - GET /api/v1/genre-movies-with-subtotals
+
 Returns a list of all movies genre-wise with subtotals of their numVotes. The response is in the following format:
 
 Genre primaryTitle numVotes
@@ -111,6 +115,7 @@ Animation Pauvre Pierrot 1716
 TOTAL 1973
 
 - POST /api/v1/update-runtime-minutes
+
 Updates the runtimeMinutes of all movies in the database using SQL queries. The endpoint increments the runtimeMinutes by 15 if genre is Documentary, 30 if genre is Animation, and 45 for all other genres.
 
 ### SQL Queries
