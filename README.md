@@ -40,7 +40,8 @@ The following API endpoints are available in this application:
 
 ### GET /api/v1/longest-duration-movies
 
-- Returns the top 10 movies with the longest runtime in JSON format. The response includes the following details:
+- Returns the top 10 movies with the longest runtime in JSON format.
+- The response includes the following details:
 
 ```yaml
 {
@@ -68,7 +69,8 @@ The following API endpoints are available in this application:
 
 ### POST /api/v1/new-movie (Create movie)
 
-- Adds a new movie to the database. The request body should be in JSON format with the following details:
+- Adds a new movie to the database.
+- The request body should be in JSON format with the following details:
 
 ```yaml
 {
@@ -111,7 +113,8 @@ The following API endpoints are available in this application:
 
 ### GET /api/v1/genre-movies-with-subtotals
 
-- Returns a list of all movies genre-wise with subtotals of their numVotes. The response is in the following format:
+- Returns a list of all movies genre-wise with subtotals of their numVotes.
+- The response is in the following format:
 
 ```yaml
 {
