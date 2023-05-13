@@ -38,9 +38,9 @@ The `ratings` table has the following columns:
 
 The following API endpoints are available in this application:
 
-- GET /api/v1/longest-duration-movies
+### GET /api/v1/longest-duration-movies
 
-* Returns the top 10 movies with the longest runtime in JSON format. The response includes the following details:
+- Returns the top 10 movies with the longest runtime in JSON format. The response includes the following details:
 
 ```yaml
 {
@@ -66,21 +66,26 @@ The following API endpoints are available in this application:
 }
 ```
 
-- POST /api/v1/new-movie
+### POST /api/v1/new-movie (Create movie)
 
 - Adds a new movie to the database. The request body should be in JSON format with the following details:
 
-- tconst
-- titleType
-- primaryTitle
-- runtimeMinutes
-- genres
+```yaml
+{
+  "tconst": "tt0000102",
+  "titleType": "short",
+  "primaryTitle": "The Boxing",
+  "runtimeMinutes": 190,
+  "genres": "short",
+}
+```
 
 - On successful save, the endpoint returns a success message.
 
-- GET /api/v1/top-rated-movies
+### GET /api/v1/top-rated-movies
 
-- Returns the movies with an averageRating > 6.0, in sorted order by averageRating in JSON format. The response includes the following details:
+- Returns the movies with an averageRating > 6.0, in sorted order by averageRating in JSON format.
+- The response includes the following details:
 
 ```yaml
 {
@@ -104,53 +109,46 @@ The following API endpoints are available in this application:
 }
 ```
 
-- GET /api/v1/genre-movies-with-subtotals
+### GET /api/v1/genre-movies-with-subtotals
 
 - Returns a list of all movies genre-wise with subtotals of their numVotes. The response is in the following format:
 
 ```yaml
 {
-    "status": true,
-    "message": "Subtotal movie access successfully",
-    "result": [
-        {
-            "Genre": "Action",
-            "primaryTitle": "Boat Leaving the Port",
-            "numVotes": "1440"
-        },
-        {
-            "Genre": "Action",
-            "primaryTitle": "Cordeliers Square in Lyon",
-            "numVotes": "1118"
-        },
-        {
-            "Genre": "Action",
-            "primaryTitle": "TOTAL",
-            "numVotes": "2558"
-        },
-        {
-            "Genre": "Animation",
-            "primaryTitle": "Autour dune cabine",
-            "numVotes": "1020"
-        },
-        {
-            "Genre": "Animation",
-            "primaryTitle": "Le clown et ses chiens",
-            "numVotes": "257"
-        },
-        {
-            "Genre": "Comedy",
-            "primaryTitle": "TOTAL",
-            "numVotes": "1277"
-        },
-    ]
+  "status": true,
+  "message": "Subtotal movie access successfully",
+  "result":
+    [
+      {
+        "Genre": "Action",
+        "primaryTitle": "Boat Leaving the Port",
+        "numVotes": "1440",
+      },
+      {
+        "Genre": "Action",
+        "primaryTitle": "Cordeliers Square in Lyon",
+        "numVotes": "1118",
+      },
+      { "Genre": "Action", "primaryTitle": "TOTAL", "numVotes": "2558" },
+      {
+        "Genre": "Animation",
+        "primaryTitle": "Autour dune cabine",
+        "numVotes": "1020",
+      },
+      {
+        "Genre": "Animation",
+        "primaryTitle": "Le clown et ses chiens",
+        "numVotes": "257",
+      },
+      { "Genre": "Comedy", "primaryTitle": "TOTAL", "numVotes": "1277" },
+    ],
 }
 ```
- 
 
-- POST /api/v1/update-runtime-minutes
+### POST /api/v1/update-runtime-minutes
 
-- Updates the runtimeMinutes of all movies in the database using SQL queries. The endpoint increments the runtimeMinutes by 15 if genre is Documentary, 30 if genre is Animation, and 45 for all other genres.
+- Updates the runtimeMinutes of all movies in the database using SQL queries.
+- The endpoint increments the runtimeMinutes by 15 if genre is Documentary, 30 if genre is Animation, and 45 for all other genres.
 
 ### SQL Queries
 
