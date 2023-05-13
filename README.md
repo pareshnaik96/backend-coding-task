@@ -68,23 +68,19 @@ The following API endpoints are available in this application:
 
 - POST /api/v1/new-movie
 
-* Adds a new movie to the database. The request body should be in JSON format with the following details:
+- Adds a new movie to the database. The request body should be in JSON format with the following details:
 
-```yaml
-{
-  tconst
-  titleType
-  primaryTitle
-  runtimeMinutes
-  genres,
-}
-```
+- tconst
+- titleType
+- primaryTitle
+- runtimeMinutes
+- genres
 
-On successful save, the endpoint returns a success message.
+- On successful save, the endpoint returns a success message.
 
 - GET /api/v1/top-rated-movies
 
-* Returns the movies with an averageRating > 6.0, in sorted order by averageRating in JSON format. The response includes the following details:
+- Returns the movies with an averageRating > 6.0, in sorted order by averageRating in JSON format. The response includes the following details:
 
 ```yaml
 {
@@ -110,24 +106,51 @@ On successful save, the endpoint returns a success message.
 
 - GET /api/v1/genre-movies-with-subtotals
 
-* Returns a list of all movies genre-wise with subtotals of their numVotes. The response is in the following format:
+- Returns a list of all movies genre-wise with subtotals of their numVotes. The response is in the following format:
 
 ```yaml
 {
-  Genre primaryTitle numVotes
-  Documentary Carmencita 1911
-  Documentary Edison Kinetoscopic
-  Record…. 2054
-  TOTAL 3965
-  Animation Le clown et ses chiens 257
-  Animation Pauvre Pierrot 1716
-  TOTAL 1973,
+    "status": true,
+    "message": "Subtotal movie access successfully",
+    "result": [
+        {
+            "Genre": "Action",
+            "primaryTitle": "Boat Leaving the Port",
+            "numVotes": "1440"
+        },
+        {
+            "Genre": "Action",
+            "primaryTitle": "Cordeliers Square in Lyon",
+            "numVotes": "1118"
+        },
+        {
+            "Genre": "Action",
+            "primaryTitle": "TOTAL",
+            "numVotes": "2558"
+        },
+        {
+            "Genre": "Animation",
+            "primaryTitle": "Autour dune cabine",
+            "numVotes": "1020"
+        },
+        {
+            "Genre": "Animation",
+            "primaryTitle": "Le clown et ses chiens",
+            "numVotes": "257"
+        },
+        {
+            "Genre": "Comedy",
+            "primaryTitle": "TOTAL",
+            "numVotes": "1277"
+        },
+    ]
 }
 ```
+ 
 
 - POST /api/v1/update-runtime-minutes
 
-* Updates the runtimeMinutes of all movies in the database using SQL queries. The endpoint increments the runtimeMinutes by 15 if genre is Documentary, 30 if genre is Animation, and 45 for all other genres.
+- Updates the runtimeMinutes of all movies in the database using SQL queries. The endpoint increments the runtimeMinutes by 15 if genre is Documentary, 30 if genre is Animation, and 45 for all other genres.
 
 ### SQL Queries
 
